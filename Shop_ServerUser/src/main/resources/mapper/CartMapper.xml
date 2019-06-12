@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.ljb.server.user.dao.CartMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.ljb.entity.Cart">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="maxcount" jdbcType="INTEGER" property="maxcount" />
+    <result column="currcount" jdbcType="INTEGER" property="currcount" />
+  </resultMap>
+  <insert id="insert" parameterType="com.qfedu.ljb.entity.Cart" useGeneratedKeys="true" keyProperty="id">
+    insert into cart (uid, maxcount, currcount)
+    values (#{uid,jdbcType=INTEGER}, #{maxcount,jdbcType=INTEGER},
+      #{currcount,jdbcType=INTEGER})
+  </insert>
+
+</mapper>

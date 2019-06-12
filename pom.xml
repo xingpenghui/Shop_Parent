@@ -10,6 +10,7 @@
         <module>Shop_Api</module>
         <module>Shop_PayApi</module>
         <module>Shop_EsApi</module>
+        <module>Shop_Eureka</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -28,32 +29,27 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <!--排除依赖-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId></groupId>-->
-                    <!--<artifactId></artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
 
 </project>

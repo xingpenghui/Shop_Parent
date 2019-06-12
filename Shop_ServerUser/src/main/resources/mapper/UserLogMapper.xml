@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.ljb.server.user.dao.UserLogMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.ljb.entity.UserLog">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+  </resultMap>
+  <insert id="insert" parameterType="com.qfedu.ljb.entity.UserLog">
+    insert into userlog (uid, flag, createtime, content)
+    values ( #{uid,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER},  now(), #{content,jdbcType=VARCHAR})
+  </insert>
+
+</mapper>
