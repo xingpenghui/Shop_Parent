@@ -2,6 +2,7 @@ package com.qfedu.ljb.server.user.service.impl;
 
 import com.qfedu.common.config.ProjectConfig;
 import com.qfedu.common.exception.UserException;
+import com.qfedu.common.util.EncryptionUtil;
 import com.qfedu.common.util.TimeUtil;
 import com.qfedu.common.vo.R;
 import com.qfedu.ljb.entity.Cart;
@@ -13,8 +14,6 @@ import com.qfedu.ljb.server.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -37,6 +36,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(rollbackFor = {UserException.class})
     public R save(User user) throws UserException{
         try{
+            user.setPassword(EncryptionUtil.RSAEnc(ProjectConfig.PASSRSAPRI,user.getPassword()));
             //新增用户
             userMapper.insert(user);
             //初始化用户详情
@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
             cart.setCurrcount(0);
             cartMapper.insert(cart);
         }catch (Exception e){
-            throw new UserException("用户注册异常");
+            throw new UserException("用户注册异常:"+e.getMessage());
         }
 
         return R.setOK();
@@ -71,6 +71,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public R all() {
         return R.setOK("ok",userMapper.all());
+    }
+
+    @Override
+    public R checkPhone(String phone) {
+        User user=userMapper.selectByPhone(phone);
+        if(user!=null){
+            return R.setERROR("手机号已经注册过，请找回密码");
+        }else {
+            return R.setOK();
+        }
     }
 
 }

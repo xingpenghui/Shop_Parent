@@ -33,5 +33,12 @@ public class R {
         r.setData(null);
         return r;
     }
+    public static R setERROR(String msg){
+        R r=new R();
+        r.setCode(1000);
+        r.setMsg(msg);
+        r.setData(null);
+        return r;
+    }
 
 }

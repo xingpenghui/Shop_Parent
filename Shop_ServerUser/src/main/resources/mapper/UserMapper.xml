@@ -15,5 +15,8 @@
   <select id="all" resultType="com.qfedu.ljb.entity.User">
     select * from user;
   </select>
+  <select id="selectByPhone" resultType="com.qfedu.ljb.entity.User">
+     select * from user where phone=#{phone}
+  </select>
 
 </mapper>

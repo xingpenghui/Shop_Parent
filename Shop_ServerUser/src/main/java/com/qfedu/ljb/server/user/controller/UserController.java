@@ -5,10 +5,7 @@ import com.qfedu.common.vo.R;
 import com.qfedu.ljb.entity.User;
 import com.qfedu.ljb.server.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *@Author feri
@@ -28,5 +25,10 @@ public class UserController {
     @PostMapping("user/save.do")
     public R save(@RequestBody User user) throws UserException {
         return userService.save(user);
+    }
+    //校验手机号是否存在
+    @GetMapping("user/checkphone.do")
+    public R check(@RequestParam("phone") String phone){
+        return userService.checkPhone(phone);
     }
 }

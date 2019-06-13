@@ -1,4 +1,4 @@
-package com.qfedu.ljb.api.config;
+package com.qfedu.common.message.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,9 +21,9 @@ public class SwaggerConfig {
      * 访问地址： http://项目实际地址/swagger-ui.html
      * */
     public ApiInfo createA(){
-        ApiInfo info=new ApiInfoBuilder().title("邻家邦-数据接口平台").
+        ApiInfo info=new ApiInfoBuilder().title("统一消息平台").
                 contact( new Contact("邢朋辉","http://www.mobiletrain.org","xingfei_work@163.com")).
-                description("实现一个邻家邦项目的数据接口").build();
+                description("实现短信、邮箱等发送信息").build();
         return info;
     }
     /**
@@ -36,7 +36,7 @@ public class SwaggerConfig {
     @Bean//创建对象  修饰方法 方法的返回值必须是引用类型  对象存储在IOC容器
     public Docket createDocket(){
        Docket docket=new Docket(DocumentationType.SWAGGER_2).apiInfo(createA()).select().
-               apis(RequestHandlerSelectors.basePackage("com.qfedu.ljb.api.controller")).
+               apis(RequestHandlerSelectors.basePackage("com.qfedu.common.message.core.controller")).
                build();
        return docket;
     }
