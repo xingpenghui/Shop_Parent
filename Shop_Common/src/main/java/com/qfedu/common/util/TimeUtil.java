@@ -24,10 +24,18 @@ public class TimeUtil {
         calendar.add(Calendar.DAY_OF_MONTH,days);
         return calendar.getTime();
     }
+    //多少月后
     public static Date getMonths(int months){
         //日历类
         Calendar calendar=Calendar.getInstance();
         calendar.add(Calendar.MONTH,months);
+        return calendar.getTime();
+    }
+    //多少分钟
+    public static Date getMinutes(int minutes){
+        //日历类
+        Calendar calendar=Calendar.getInstance();
+        calendar.add(Calendar.MINUTE,minutes);
         return calendar.getTime();
     }
     //计算今天剩余秒

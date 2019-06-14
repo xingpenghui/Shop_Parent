@@ -227,6 +227,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    @Transactional
     public R sendMessage(Message message, String ip) {
         if(message.getType()<4){
             //短信
