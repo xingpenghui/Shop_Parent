@@ -12,6 +12,7 @@ import java.util.Date;
  */
 public class TimeUtil {
     public static String getTime(){
+
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     }
     public static String getDate(){
@@ -29,6 +30,13 @@ public class TimeUtil {
         //日历类
         Calendar calendar=Calendar.getInstance();
         calendar.add(Calendar.MONTH,months);
+        return calendar.getTime();
+    }
+    //多少年后
+    public static Date getYear(int year){
+        //日历类
+        Calendar calendar=Calendar.getInstance();
+        calendar.add(Calendar.YEAR,year);
         return calendar.getTime();
     }
     //多少分钟
@@ -51,8 +59,19 @@ public class TimeUtil {
         }
         return 0;
     }
+    //获取当前距离指定日期的天数
+    public static int getDistanceDays(Date date){
+        Calendar calendar=Calendar.getInstance();
+        return (int)(calendar.getTime().getTime()/1000/24/3600-date.getTime()/1000/24/3600);
+    }
 
-//    public static void main(String[] args) {
-//        System.out.println(getLastSeconds());
-//    }
+    public static void main(String[] args) {
+        Calendar calendar=Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH,-12);
+        System.out.println(getDistanceDays(calendar.getTime()));
+    }
+
+    public static String getFormat(Date date){
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+    }
 }

@@ -45,6 +45,7 @@ public class JwtUtil {
             Claims claims=Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
             return true;
         }catch (Exception e){
+            e.printStackTrace();
             return false;
         }
     }
@@ -76,10 +77,11 @@ public class JwtUtil {
     }
 
     public static void main(String[] args) {
-        String token=createJWT("1001","{'name':'zhangsan','phone':'18515990152'}");
-        System.out.println(token);
-        System.out.println("解析："+parseJWT(token));
-        String token1=updateJWT(token);
-        System.out.println("更新之后："+token1);
+//        String token=createJWT("1001","{'name':'zhangsan','phone':'18515990152'}");
+//        System.out.println(token);
+//        System.out.println("解析："+parseJWT(token));
+//        String token1=updateJWT(token);
+//        System.out.println("更新之后："+token1);
+        System.out.println(checkJWT("eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1ODkxMzMxMTk1Njc2OTE3NzYiLCJzdWIiOiJ7XCJpZFwiOlwiNTg5MTMzMTE5NTY3NjkxNzc2XCIsXCJwaG9uZVwiOlwiMTg1MTU5OTAxNTRcIixcInVpZFwiOjZ9IiwiaWF0IjoxNTYwNTAxODgxLCJleHAiOjE1NjA1MDM2ODF9.iwZfw0EkaAxtuo56-SaVNZnCXZL5E9f0FFt_oXe4aws"));
     }
 }

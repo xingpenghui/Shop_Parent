@@ -66,6 +66,10 @@ public class JedisUtil {
             return jedis.set(key, value);
         }
 
+        public long ttl(String key){
+            return getJedis().ttl(key);
+        }
+
         public String setExpire(String key,String value,int sceonds){
            return getJedis().setex(key,sceonds,value);
         }

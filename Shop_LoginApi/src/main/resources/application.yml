@@ -4,11 +4,9 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 spring:
   application:
-    name: ApiDataConsumer
-  main:
-    allow-bean-definition-overriding: true
+    name: ApiLoginConsumer
 server:
-  port: 9801
+  port: 9802
 
 
 
