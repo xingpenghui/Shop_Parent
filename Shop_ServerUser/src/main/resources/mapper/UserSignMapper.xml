@@ -12,7 +12,7 @@
   <select id="selectByUidLast" resultType="com.qfedu.ljb.entity.UserSign">
     select * from usersign where uid=#{uid} order by createtime desc limit 1
   </select>
-  <select id="selectByUidLast" resultType="com.qfedu.ljb.entity.UserSign">
+  <select id="selectByUidDays" resultType="com.qfedu.ljb.entity.UserSign">
     select * from usersign where uid=#{uid} and to_days(now())-to_days(createtime) &lt;= #{days};
   </select>
 </mapper>
