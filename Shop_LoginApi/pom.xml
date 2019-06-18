@@ -32,6 +32,10 @@
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.qfedu.shop</groupId>
             <artifactId>Shop_Common</artifactId>
         </dependency>

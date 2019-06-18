@@ -15,6 +15,7 @@
         <module>Shop_Message</module>
         <module>Shop_LoginApi</module>
         <module>Shop_ResourceApi</module>
+        <module>Shop_Job</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -33,6 +34,7 @@
     <properties>
         <java.version>1.8</java.version>
         <eureka.version>2.1.1.RELEASE</eureka.version>
+        <quertzboot.version>2.1.5.RELEASE</quertzboot.version>
         <swagger.version>2.9.2</swagger.version>
         <mysql.version>8.0.16</mysql.version>
         <mybatisboot.version>2.0.1</mybatisboot.version>
@@ -49,6 +51,7 @@
         <fileupload.version>1.4</fileupload.version>
         <io.version>2.6</io.version>
         <oss.version>2.8.3</oss.version>
+        <httpclient.version>4.5.9</httpclient.version>
     </properties>
 
     <!--2、版本限定 指定某个jar用指定的版本号-->
@@ -103,6 +106,11 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
                 <version>${feign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zuul</artifactId>
+                <version>${zuul.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
             <dependency>
@@ -162,9 +170,18 @@
                 <artifactId>aliyun-sdk-oss</artifactId>
                 <version>${oss.version}</version>
             </dependency>
-
-
-
+            <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-quartz -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-quartz</artifactId>
+                <version>${quertzboot.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

@@ -9,6 +9,15 @@ spring:
     allow-bean-definition-overriding: true
 server:
   port: 9801
+#开启Feign的压缩 GZIP  提高效率
+feign:
+  compression:
+    request:
+      enabled: true
+      mime-types: application/json
+      min-request-size: 1024
+    response:
+      enabled: true
 
 
 

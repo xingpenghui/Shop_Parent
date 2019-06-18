@@ -7,6 +7,9 @@ spring:
     name: ApiLoginConsumer
 server:
   port: 9802
+feign:
+  httpclient:
+    enabled: true
 
 
 
