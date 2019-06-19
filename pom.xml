@@ -16,6 +16,7 @@
         <module>Shop_LoginApi</module>
         <module>Shop_ResourceApi</module>
         <module>Shop_Job</module>
+        <module>Shop_ServerGoods</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -187,12 +188,6 @@
     </dependencyManagement>
 
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-    </dependencies>
 
 
 

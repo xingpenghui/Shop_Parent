@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.ljb.server.goods.dao.GoodsPriceMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.ljb.entity.GoodsPrice">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="skuids" jdbcType="VARCHAR" property="skuids" />
+    <result column="currprice" jdbcType="INTEGER" property="currprice" />
+    <result column="oldprice" jdbcType="INTEGER" property="oldprice" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.qfedu.ljb.entity.GoodsPrice">
+    insert into goodsprice (gid, skuids,
+      currprice, oldprice)
+    values (#{gid,jdbcType=INTEGER}, #{skuids,jdbcType=VARCHAR},
+      #{currprice,jdbcType=INTEGER}, #{oldprice,jdbcType=INTEGER})
+  </insert>
+
+</mapper>

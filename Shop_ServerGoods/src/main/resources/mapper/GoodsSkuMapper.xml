@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.ljb.server.goods.dao.GoodsSkuMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.ljb.entity.GoodsSku">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="gaid" jdbcType="INTEGER" property="gaid" />
+    <result column="gavalue" jdbcType="VARCHAR" property="gavalue" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.qfedu.ljb.entity.GoodsSku">
+    insert into goodssku (gid, gaid, gavalue)
+    values ( #{gid,jdbcType=INTEGER}, #{gaid,jdbcType=INTEGER},
+      #{gavalue,jdbcType=VARCHAR})
+  </insert>
+
+</mapper>

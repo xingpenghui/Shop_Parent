@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.ljb.server.goods.dao.GoodsCollectMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.ljb.entity.GoodsCollect">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, gid, uid, createtime
+  </sql>
+  <select id="selectByUid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from goodscollect where uid=#{uid} order by createtime desc
+  </select>
+  <delete id="deleteByUid">
+    delete from goodscollect where uid=#{uid} and gid=#{gid}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.ljb.entity.GoodsCollect">
+    insert into goodscollect (gid, uid,createtime)
+    values ( #{gid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, now())
+  </insert>
+
+</mapper>

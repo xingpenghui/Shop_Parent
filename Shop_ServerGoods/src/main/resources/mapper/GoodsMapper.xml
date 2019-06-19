@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.ljb.server.goods.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.ljb.entity.Goods">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gtid" jdbcType="INTEGER" property="gtid" />
+    <result column="brand" jdbcType="VARCHAR" property="brand" />
+    <result column="discount" jdbcType="VARCHAR" property="discount" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="picurl" jdbcType="VARCHAR" property="picurl" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, name, gtid, brand, discount, flag, picurl
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from goods where id=#{id}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from goods
+    <where>
+      <if test="name!=null">
+        and name =#{name}
+      </if>
+      <if test="brand!=null">
+        and brand=#{brand}
+      </if>
+    </where>
+    order by id desc;
+  </select>
+  <insert id="insert" parameterType="com.qfedu.ljb.entity.Goods">
+    insert into goods ( name, gtid, brand, discount, flag, picurl)
+    values (#{name,jdbcType=VARCHAR}, #{gtid,jdbcType=INTEGER},
+      #{brand,jdbcType=VARCHAR}, #{discount,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER},#{picurl,jdbcType=VARCHAR})
+  </insert>
+
+</mapper>

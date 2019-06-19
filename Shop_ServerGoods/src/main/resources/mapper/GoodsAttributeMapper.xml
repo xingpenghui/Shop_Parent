@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.ljb.server.goods.dao.GoodsAttributeMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.ljb.entity.GoodsAttribute">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, name
+  </sql>
+  <select id="selectById"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from goodsattribute where id=#{id}
+  </select>
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from goodsattribute order by id asc
+  </select>
+
+  <insert id="insert" >
+    insert into goodsattribute (name)values ( #{name})
+  </insert>
+
+</mapper>
