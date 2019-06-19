@@ -10,7 +10,6 @@ import java.util.List;
  *@Author feri
  *@Date Created in 2019/6/15 11:38
  */
-@Repository
 public interface UserSignDao {
     int insert(UserSign sign);
     List<UserSign> selectByUid(int uid);

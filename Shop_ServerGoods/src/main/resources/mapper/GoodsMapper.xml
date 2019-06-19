@@ -19,24 +19,52 @@
     <include refid="Base_Column_List" />
     from goods where id=#{id}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from goods
-    <where>
-      <if test="name!=null">
-        and name =#{name}
-      </if>
-      <if test="brand!=null">
-        and brand=#{brand}
-      </if>
-    </where>
-    order by id desc;
-  </select>
+
   <insert id="insert" parameterType="com.qfedu.ljb.entity.Goods">
     insert into goods ( name, gtid, brand, discount, flag, picurl)
     values (#{name,jdbcType=VARCHAR}, #{gtid,jdbcType=INTEGER},
       #{brand,jdbcType=VARCHAR}, #{discount,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER},#{picurl,jdbcType=VARCHAR})
   </insert>
+  <select id="selectAll" resultType="com.qfedu.ljb.server.goods.dto.GoodsListDto">
+    select g.*,gp.minprice,gpay.paycount from goods g inner join
+(select min(currprice) minprice,gid from goodsprice group by gid) gp
+on g.id=gp.gid inner join (select count(*) paycount,og.gid from
+(select od.id,od.gid from orderdetail od
+inner join (select id from goodsorder where flag between 2 and 7) o
+on od.oid=o.id) og GROUP BY og.gid) gpay on gpay.gid=g.id
+  <where>
+    <if test="gtid!=null">
+      and gtid=#{gtid}
+    </if>
+    <if test="brand!=null">
+      and brand=#{brand}
+    </if>
+   order by paycount desc
+  </where>
+  </select>
+  <resultMap id="rmdetail" type="com.qfedu.ljb.server.goods.dto.GoodsDetailDto">
+    <id property="id" column="id"></id>
+    <result property="name" column="name"></result>
+    <result property="gtid" column="gtid"></result>
+    <result property="brand" column="brand"></result>
+    <result property="discount" column="discount"></result>
+    <result property="flag" column="flag"></result>
+    <result property="picurl" column="picurl"></result>
+    <result property="minprice" column="minprice"></result>
+    <result property="paycount" column="paycount"></result>
 
+    <!--嵌套集合-->
+    <collection property="skuDtoList" ofType="com.qfedu.ljb.server.goods.dto.GoodsSkuDto">
+      <id property="gsid" column="gsid"></id>
+      <result property="gavalue" column="gavalue"></result>
+      <result property="skuname" column="skuname"></result>
+    </collection>
+    <!--嵌套对象-->
+    <!--<association property=""></association>-->
+  </resultMap>
+  <select id="selectDetail" resultMap="rmdetail">
+    select * from (select gs.gavalue,gs.gid,gs.id gsid,ga.name skuname from goodssku gs inner join goodsattribute ga on gs.gaid=ga.id where gid=#{id}) gsku inner join
+(select g.*,gp.minprice,gp.maxprice from goods g inner join (select min(currprice) minprice,max(currprice) maxprice,gid from goodsprice group by gid) gp
+on g.id=gp.gid) gd on gsku.gid=gd.id where id=#{id};
+  </select>
 </mapper>

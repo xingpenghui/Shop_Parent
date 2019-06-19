@@ -3,8 +3,9 @@ package com.qfedu.ljb.server.goods.controller;
 import com.qfedu.common.vo.R;
 import com.qfedu.ljb.server.goods.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  *@Author feri
@@ -21,4 +22,12 @@ public class GoodsController {
         return goodsService.queryIndexNew();
     }
 
+    @PostMapping("goods/page.do")
+    public R page(@RequestBody Map<String,String> map){
+        return goodsService.queryPage(map);
+    }
+    @GetMapping("goods/detail.do")
+    public R detail(int id){
+        return goodsService.queryDetail(id);
+    }
 }

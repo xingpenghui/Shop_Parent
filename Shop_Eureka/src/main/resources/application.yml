@@ -3,6 +3,7 @@ server:
   port: 8761
 eureka:
   instance:
+    #preferIpAddress: true
     hostname: localhost
   client:
     registerWithEureka: false   #是否注册  注册中心 不需要注册

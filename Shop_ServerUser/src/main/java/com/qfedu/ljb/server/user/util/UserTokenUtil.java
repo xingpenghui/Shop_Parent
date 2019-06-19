@@ -24,4 +24,19 @@ public class UserTokenUtil {
             return 0;
         }
     }
+    public static User parseUserToken(String json){
+        if(json!=null){
+            return JSON.parseObject(json,User.class);
+        }else {
+            return null;
+        }
+    }
+    public static int parseUid(String json){
+        if(json!=null){
+            User user= JSON.parseObject(json,User.class);
+            return user.getId();
+        }else {
+            return 0;
+        }
+    }
 }
