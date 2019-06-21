@@ -17,6 +17,7 @@
         <module>Shop_ResourceApi</module>
         <module>Shop_Job</module>
         <module>Shop_ServerGoods</module>
+        <module>Shop_AdminUI</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -53,6 +54,8 @@
         <io.version>2.6</io.version>
         <oss.version>2.8.3</oss.version>
         <httpclient.version>4.5.9</httpclient.version>
+        <!--<esclient.version>6.1.1</esclient.version>-->
+        <dataes.version>2.1.2.RELEASE</dataes.version>
     </properties>
 
     <!--2、版本限定 指定某个jar用指定的版本号-->
@@ -183,6 +186,28 @@
                 <artifactId>spring-boot-starter-quartz</artifactId>
                 <version>${quertzboot.version}</version>
             </dependency>
+
+                      <!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch -->
+            <!--<dependency>-->
+                <!--<groupId>org.elasticsearch</groupId>-->
+                <!--<artifactId>elasticsearch</artifactId>-->
+                <!--<version>${esclient.version}</version>-->
+            <!--</dependency>-->
+
+            <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.elasticsearch.client/transport &ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>org.elasticsearch.client</groupId>-->
+                <!--<artifactId>transport</artifactId>-->
+                <!--<version>${esclient.version}</version>-->
+            <!--</dependency>-->
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-elasticsearch -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+                <version>${dataes.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

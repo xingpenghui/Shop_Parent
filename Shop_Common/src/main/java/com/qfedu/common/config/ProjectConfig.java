@@ -25,14 +25,20 @@ public class ProjectConfig {
     //Redis常用的key的设置
     public static final String SMSPRELIMIT="smspre:";//记录手机号一分钟只能发一次 smspre:180515990152 key
     public static final String SMSPREDAY="smsday:";//记录手机号一天只能发20条 smsday:18515990152
-    public static final String SMSCODE="smscode:";//
+    public static final String SMSCODE="smscode:";//短信验证码  3分钟
     public static final String TOKENJWT="jwt:";//记录令牌  有效期 30分钟
     public static final String TOKENPHONE="user:";//记录手机号对应的令牌  有效期 30分钟
     public static final String USERLOGINCOUNT="uc:";// uc:手机号  次数  10分钟
     public static final String USERSD="userfreeze:";//手机号 所有冻结的手机号
     public static final String SIGNKEY="usign:ljb";//记录每天签到  Set集合 内容 手机号
-    //
-    public static final String TOKENHEAD="usertoken";
+    public static final String TOKENHEAD="usertoken";//请求消息头的名称，记录令牌  前端
+    //正常的是有效期4小时5分钟  备份永久有效 没有的删除  Hash
+    public static final String ESGOODSADD="esgoods:add";//es服务记录4小时之内新增的商品信息
+    public static final String ESGOODSADDBU="esgoods:addbu";//es服务记录4小时之内新增的商品信息-备份
+    public static final String ESGOODSUPDATE="esgoods:update";//es服务记录4小时之内修改的商品信息
+    public static final String ESGOODSUPDATEBU="esgoods:updatebu";//es服务记录4小时之内修改的商品信息-备份
+    public static final String ESGOODSDELETE="esgoods:del";//es服务记录4小时之内删除的商品信息
+    public static final String ESGOODSDELETEBU="esgoods:delbu";//es服务记录4小时之内删除的商品信息-备份
 
 
 

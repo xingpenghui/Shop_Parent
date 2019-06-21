@@ -10,7 +10,7 @@ import java.util.Map;
 
 public interface GoodsMapper {
     int insert(Goods record);
-    List<GoodsListDto> selectAll(Map<String,Object> params);
+    List<GoodsListDto> selectAll(Map<String,String> params);
     Goods selectById(int id);
     GoodsDetailDto selectDetail(int id);
 }

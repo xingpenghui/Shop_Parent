@@ -2,6 +2,7 @@ package com.qfedu.ljb.server.goods.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.qfedu.common.vo.PageBean;
 import com.qfedu.common.vo.R;
 import com.qfedu.ljb.server.goods.dao.GoodsMapper;
@@ -28,13 +29,14 @@ public class GoodsServiceImpl implements GoodsService {
     public R queryPage(Map<String, String> map) {
         int page=Integer.parseInt(map.get("page"));
         int count=Integer.parseInt(map.get("count"));
-        Page<GoodsListDto> pageObj=PageHelper.startPage(page,count);
+        PageHelper.startPage(page,count);
+        PageInfo<GoodsListDto> pageInfo=new PageInfo<GoodsListDto>(goodsMapper.selectAll(map));
         PageBean<GoodsListDto> pageBean=new PageBean();
         pageBean.setCount(count);
         pageBean.setCurrPage(page);
-        pageBean.setTotalCount((int)pageObj.getTotal());
-        pageBean.setTotalPage(pageObj.getPages());
-        pageBean.setData(pageObj.getResult());
+        pageBean.setTotalCount((int) pageInfo.getTotal());
+        pageBean.setTotalPage(pageInfo.getPages());
+        pageBean.setData(pageInfo.getList());
         return R.setOK("OK",pageBean);
     }
 
