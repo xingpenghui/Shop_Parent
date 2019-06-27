@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.ljb.pay.db.dao.TOrderqrcodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.qfedu.ljb.pay.db.entity.TOrderqrcode">
+        <id column="id" property="id" />
+        <result column="opid" property="opid" />
+        <result column="payurl" property="payurl" />
+        <result column="qrcodeurl" property="qrcodeurl" />
+        <result column="flag" property="flag" />
+        <result column="ctime" property="ctime" />
+    </resultMap>
+
+    <select id="selectLast" resultMap="BaseResultMap">
+        select * from t_orderqrcode where opid=#{opid} order by ctime desc limit 1
+    </select>
+</mapper>

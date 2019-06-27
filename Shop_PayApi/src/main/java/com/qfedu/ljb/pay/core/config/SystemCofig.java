@@ -6,5 +6,5 @@ package com.qfedu.ljb.pay.core.config;
  */
 public class SystemCofig {
     //支付系统的域名
-    public static final String PAYURL="http://localhost:8080/";
+    public static final String PAYURL="http://localhost:9807/";
 }

@@ -19,6 +19,7 @@ import java.io.IOException;
 @Controller
 public class QrcodeController {
 
+//    public static Class<QrcodeController> clz;
     //生成二维码
     @GetMapping("qrcode/createqrcode.do")
     public void createQrcode(String msg, HttpServletResponse response) throws IOException {
