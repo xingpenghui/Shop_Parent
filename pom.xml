@@ -56,6 +56,7 @@
         <httpclient.version>4.5.9</httpclient.version>
         <!--<esclient.version>6.1.1</esclient.version>-->
         <dataes.version>2.1.2.RELEASE</dataes.version>
+        <zxing.version>3.3.2</zxing.version>
     </properties>
 
     <!--2、版本限定 指定某个jar用指定的版本号-->
@@ -207,7 +208,12 @@
                 <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
                 <version>${dataes.version}</version>
             </dependency>
-
+            <!-- https://mvnrepository.com/artifact/com.google.zxing/javase -->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>javase</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
